@@ -1,0 +1,11 @@
+{
+	"name": "hx-nanovg",
+	"url": "http://github.com/dazKind/hx-nanovg",
+	"license": "MIT",
+	"tags": [],
+	"description": "",
+	"version": "0.0.1",
+	"releasenote": "Initial version",
+	"contributors": ["dazKind"],
+	"dependencies": {}
+}

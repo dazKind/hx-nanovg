@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+
+	<meta title="NanoVG Demo" package="com.nanovg.demo" version="1.0.0" company="" />
+	<app main="Demo" path="./" file="NanoVG-Demo" />
+
+	<source path="./" />
+
+    <haxedef name="HXCPP_FLOAT32" />
+    <android target-sdk-version="19" />
+
+	<haxelib name="lime" />
+	<haxelib name="hx-nanovg" />
+
+</project>
