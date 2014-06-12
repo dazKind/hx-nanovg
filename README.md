@@ -15,3 +15,4 @@ haxelib dev hx-nanovg hx-nanovg
 #### Notes:
 * WIP
 * Demo uses Lime
+* check out nanovg to /deps/nanovg
