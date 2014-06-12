@@ -10,9 +10,9 @@ class Demo {
     private var lime:Lime;
     var vg:cpp.Pointer<NvgContext>;
 
-	public function new () {}
+    public function new () {}
 
-	public function ready (lime:Lime):Void {
+    public function ready (lime:Lime):Void {
         this.lime = lime;
 
         vg = Nvg.createGL(512, 512, 0);

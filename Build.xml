@@ -1,5 +1,5 @@
 <xml>
-	<files id='haxe'>,
+    <files id='haxe'>,
         <compilerflag value='-I${haxelib:hx-nanovg}/native-bindings/src/'/>
         <compilerflag value='-I${haxelib:hx-nanovg}/deps/nanovg/src'/>
         <compilerflag value='-DGLEW_STATIC'/>
