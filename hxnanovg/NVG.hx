@@ -48,7 +48,7 @@ extern class Nvg {
     public static function circle(_ctx:Pointer<NvgContext>, _cx:Int, _cy:Int, _r:Float):Void;
 
     @:native("::nvgPathWinding")
-    public static function pathWinding(_ctx:Pointer<NvgContext>, _dir:Int):Void;
+    public static function pathWinding(_ctx:Pointer<NvgContext>, _dir:NvgSolidity):Void;
 
     @:native("::nvgFillColor")
     public static function fillColor(_ctx:Pointer<NvgContext>, _color:NvgColor):Void;
