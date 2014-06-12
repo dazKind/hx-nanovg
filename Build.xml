@@ -1,0 +1,15 @@
+<xml>
+	<files id='haxe'>,
+        <compilerflag value='-I${haxelib:hx-nanovg}/native-bindings/src/'/>
+        <compilerflag value='-I${haxelib:hx-nanovg}/deps/nanovg/src'/>
+        <compilerflag value='-DGLEW_STATIC'/>
+        <compilerflag value='-DNANOVG_GL2_IMPLEMENTATION'/>
+        <file name='${haxelib:hx-nanovg}/native-bindings/src/hx-nanovg.cpp'/>
+        <file name='${haxelib:hx-nanovg}/deps/nanovg/src/nanovg.c'/>
+        <file name='${haxelib:hx-nanovg}/deps/nanovg/src/stb_image.c'/>
+    </files>
+    <target id='haxe'>
+        <lib name='opengl32.lib' if="windows"/>
+        <lib name='glew32s.lib' if="windows"/>
+    </target>
+</xml>
