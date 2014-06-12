@@ -2,9 +2,10 @@
 <project>
 
 	<meta title="NanoVG Demo" package="com.nanovg.demo" version="1.0.0" company="" />
-	<app main="Demo" path="./" file="NanoVG-Demo" />
+	<app main="Demo" path="." file="NanoVG-Demo" />
+	<window hardware="true" allow-shaders="true" require-shaders="true" depth-buffer="true" stencil-buffer="true" fps="100"/>
 
-	<source path="./" />
+	<source path="src" />
 
     <haxedef name="HXCPP_FLOAT32" />
     <android target-sdk-version="19" />
