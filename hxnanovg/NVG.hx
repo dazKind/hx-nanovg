@@ -242,7 +242,7 @@ extern class Nvg {
     public static function degToRad(_deg:Float):Float;
 
     @:native("::nvgRadToDeg")
-    public static function radToDeg(_deg:Float):Float;
+    public static function radToDeg(_rad:Float):Float;
 
 
     @:native("::nvgCreateImage")
