@@ -1,5 +1,7 @@
 #include "hxcpp.h"
 
+#include <hx/CFFI.h>
+
 #include <GL/glew.h>
 
 #include "nanovg.h"
@@ -38,5 +40,4 @@ namespace nanovg {
             nvgDeleteGL3ES(_ctx);
         #endif
     }
-
 }
