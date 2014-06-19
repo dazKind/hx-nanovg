@@ -26,7 +26,7 @@ class Demo {
         GL.clearColor (0.3, 0.3, 0.3, 1.0);
         GL.clear (GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT | GL.STENCIL_BUFFER_BIT);
 
-        Nvg.beginFrame(vg, 800, 600, 1.0, NvgAlpha.STRAIGHT_ALPHA);
+        Nvg.beginFrame(vg, 800, 600, 1.0);
         Nvg.rect(vg, 100,100, 500,300);
         Nvg.circle(vg, 120,120, 250);
         Nvg.pathWinding(vg, NvgSolidity.HOLE);   // Mark circle as a hole.
