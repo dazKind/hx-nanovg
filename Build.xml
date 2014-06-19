@@ -16,6 +16,11 @@
         <file name='${haxelib:hx-nanovg}/deps/nanovg/src/stb_image.c'/>
     </files>
     <target id='haxe'>
+    
+        <files id="native-toolkit-glew"/>
+
         <lib name='opengl32.lib' if="windows"/>
+        <vflag name="-framework" value="OpenGL" if="mac"/>
+
     </target>
 </xml>
