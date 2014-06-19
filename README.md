@@ -15,8 +15,7 @@ haxelib dev hx-nanovg hx-nanovg
 ```
 
 #### Notes:
-* WIP
-* Demo uses Lime
+* Demo uses Lime (stencil buffer enabled!)
 * uses https://github.com/native-toolkit/glew as submodule
 * check out nanovg to /deps/nanovg
 
