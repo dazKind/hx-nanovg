@@ -5,16 +5,19 @@
 You may install using:
 ```
 haxelib git hx-nanovg https://github.com/dazKind/hx-nanovg
+cd <your haxelib-dir>/hx-nanovg/git/
+git submodule update --init
 ```
 or
 ```
-git clone https://github.com/dazKind/hx-nanovg
+git clone https://github.com/dazKind/hx-nanovg --recursive
 haxelib dev hx-nanovg hx-nanovg
 ```
 
 #### Notes:
 * WIP
 * Demo uses Lime
+* uses https://github.com/native-toolkit/glew as submodule
 * check out nanovg to /deps/nanovg
 
 
