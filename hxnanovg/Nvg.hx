@@ -110,7 +110,7 @@ extern class Nvg {
     public static function deleteGL(_ctx:Pointer<NvgContext>):Void;
 
     @:native("::nvgBeginFrame")
-    public static function beginFrame(_ctx:Pointer<NvgContext>, _windowWidth:Int, _windowHeight:Int, _devicePixelRatio:Float, _alphaBlend:Int):Void;
+    public static function beginFrame(_ctx:Pointer<NvgContext>, _windowWidth:Int, _windowHeight:Int, _devicePixelRatio:Float):Void;
 
     @:native("::nvgEndFrame")
     public static function endFrame(_ctx:Pointer<NvgContext>):Void; 
