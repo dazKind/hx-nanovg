@@ -14,6 +14,9 @@ git clone https://github.com/dazKind/hx-nanovg --recursive
 haxelib dev hx-nanovg hx-nanovg
 ```
 
+#### Included Demo:
+![hx-nanovg](http://developium.net/pics/nanovg.png)
+
 #### Notes:
 * Demo uses Lime (stencil buffer enabled!)
 * uses https://github.com/native-toolkit/glew as submodule
