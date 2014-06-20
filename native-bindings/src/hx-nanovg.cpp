@@ -1,7 +1,5 @@
 #include "hxcpp.h"
 
-#include <hx/CFFI.h>
-
 #include <GL/glew.h>
 
 #include "nanovg.h"

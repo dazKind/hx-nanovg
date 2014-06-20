@@ -48,11 +48,6 @@ class NvgAlign {
     inline public static var ALIGN_BASELINE:Int  = 1<<6;
 }
 
-class NvgAlpha {
-    inline public static var STRAIGHT_ALPHA:Int  = 0;
-    inline public static var PREMULTIPLIED_ALPHA:Int  = 1;
-}
-
 @:include("nanovg.h")
 @:native("NVGcolor")
 extern class NvgColor {
