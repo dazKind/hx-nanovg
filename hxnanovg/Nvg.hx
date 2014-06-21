@@ -380,8 +380,5 @@ extern class Nvg {
 
     @:native("::nvgTextBreakLines")
     public static function textBreakLines(_ctx:Pointer<NvgContext>, _string:ConstPointer<Char>, _end:ConstPointer<Char>, _breakRowWidth:Float, _rows:Pointer<NvgTextRow>, _maxRows:Int):Int;
-
-    @:native("nanovg::testCFFI")
-    public static function testCFFI(_v:Int):Void;
 }
 
