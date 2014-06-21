@@ -49,6 +49,8 @@ class NvgAlign {
 }
 
 @:include("nanovg.h")
+@:structAccess
+@:unreflective
 @:native("NVGcolor")
 extern class NvgColor {
     public var r:Float;
@@ -58,6 +60,8 @@ extern class NvgColor {
 }
 
 @:include("nanovg.h")
+@:structAccess
+@:unreflective
 @:native("NVGpaint")
 extern class NvgPaint {
     @:native("float[]")
@@ -73,6 +77,8 @@ extern class NvgPaint {
 }
 
 @:include("nanovg.h")
+@:structAccess
+@:unreflective
 @:native("NVGglyphPosition")
 extern class NvgGlyphPosition {
     public var str:ConstPointer<Char>;
@@ -82,6 +88,8 @@ extern class NvgGlyphPosition {
 }
 
 @:include("nanovg.h")
+@:structAccess
+@:unreflective
 @:native("NVGtextRow")
 extern class NvgTextRow {
     public var start:ConstPointer<Char>;
@@ -373,5 +381,7 @@ extern class Nvg {
     @:native("::nvgTextBreakLines")
     public static function textBreakLines(_ctx:Pointer<NvgContext>, _string:ConstPointer<Char>, _end:ConstPointer<Char>, _breakRowWidth:Float, _rows:Pointer<NvgTextRow>, _maxRows:Int):Int;
 
+    @:native("nanovg::testCFFI")
+    public static function testCFFI(_v:Int):Void;
 }
 
