@@ -15,7 +15,7 @@ haxelib dev hx-nanovg hx-nanovg
 ```
 
 #### Included Demo:
-![hx-nanovg](http://developium.net/pics/nanovg.png)
+![hx-nanovg](http://developium.net/pics/nanovg2.png)
 
 #### Notes:
 * Demo uses Lime (stencil buffer enabled!)
