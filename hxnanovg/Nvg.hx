@@ -107,7 +107,7 @@ extern class NvgTextRow {
 extern class Nvg {
 
     @:native("nanovg::nvgCreateGL")
-    public static function createGL(_atlasW:Int, _atlasH:Int, _flags:Int):Pointer<NvgContext>;
+    public static function createGL(_flags:Int):Pointer<NvgContext>;
 
     @:native("nanovg::nvgDeleteGL")
     public static function deleteGL(_ctx:Pointer<NvgContext>):Void;

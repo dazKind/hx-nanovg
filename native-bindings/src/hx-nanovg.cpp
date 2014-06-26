@@ -7,7 +7,7 @@
 
 namespace nanovg {
 
-    NVGcontext* nvgCreateGL(int _atlasW, int _atlasH, int _flags) {
+    NVGcontext* nvgCreateGL(int _flags) {
         GLenum err = glewInit();
         if (err != GLEW_OK) {
             printf("Could not init glew.\n");
@@ -15,13 +15,13 @@ namespace nanovg {
 
         NVGcontext* ctx = 
         #if NANOVG_GL2_IMPLEMENTATION
-            nvgCreateGL2((_atlasW), (_atlasH), (_flags));
+            nvgCreateGL2(_flags);
         #elif NANOVG_GL3_IMPLEMENTATION
-            nvgCreateGL3((_atlasW), (_atlasH), (_flags));
+            nvgCreateGL3(_flags);
         #elif NANOVG_GL2ES_IMPLEMENTATION
-            nvgCreateGL2ES((_atlasW), (_atlasH), (_flags));
+            nvgCreateGL2ES(_flags);
         #elif NANOVG_GL3ES_IMPLEMENTATION
-            nvgCreateGL3ES((_atlasW), (_atlasH), (_flags));
+            nvgCreateGL3ES(_flags);
         #endif
 
         return ctx;

@@ -13,7 +13,6 @@
 
         <file name='${haxelib:hx-nanovg}/native-bindings/src/hx-nanovg.cpp'/>
         <file name='${haxelib:hx-nanovg}/deps/nanovg/src/nanovg.c'/>
-        <file name='${haxelib:hx-nanovg}/deps/nanovg/src/stb_image.c'/>
     </files>
     <target id='haxe'>
     
