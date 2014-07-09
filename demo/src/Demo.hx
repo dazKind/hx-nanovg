@@ -6,7 +6,6 @@ import lime.Lime;
 
 using cpp.NativeString;
 
-@:buildXml("&<include name='${haxelib:hx-nanovg}/Build.xml'/>")
 class Demo {
 
     private var lime:Lime;

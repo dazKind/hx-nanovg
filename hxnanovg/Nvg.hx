@@ -101,9 +101,9 @@ extern class NvgTextRow {
 }
 
 
-
 @:include("hx-nanovg.h")
 @:include("nanovg.h")
+@:buildXml("&<include name='${haxelib:hx-nanovg}/Build.xml'/>")
 extern class Nvg {
 
     @:native("nanovg::nvgCreateGL")
