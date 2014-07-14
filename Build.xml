@@ -1,12 +1,12 @@
 <xml>
-    <set name="NATIVE_TOOLKIT_PATH" value="${haxelib:hx-nanovg}/deps/" />
+    <set name="NATIVE_TOOLKIT_PATH" value="${haxelib:hx-nanovg}/deps" />
 
     <include name="${NATIVE_TOOLKIT_PATH}/glew/files.xml" />
 
     <files id='haxe'>,
-        <compilerflag value='-I${haxelib:hx-nanovg}/native-bindings/src/'/>
+        <compilerflag value='-I${haxelib:hx-nanovg}/native-bindings/src'/>
         <compilerflag value='-I${haxelib:hx-nanovg}/deps/nanovg/src'/>
-        <compilerflag value="-I${NATIVE_TOOLKIT_PATH}/glew/include/"/>
+        <compilerflag value="-I${NATIVE_TOOLKIT_PATH}/glew/include"/>
         <compilerflag value='-DNANOVG_GL2_IMPLEMENTATION'/>
         
         <include name="${NATIVE_TOOLKIT_PATH}/glew/defines.xml" />

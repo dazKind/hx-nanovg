@@ -6,6 +6,7 @@ import lime.Lime;
 
 using cpp.NativeString;
 
+@:buildXml("&<include name='${haxelib:hx-nanovg}/Build.xml'/>")
 class Demo {
 
     private var lime:Lime;
@@ -46,6 +47,7 @@ class Demo {
         Nvg.fillColor(vg, Nvg.rgba(255,255,255,64));
         Nvg.textAlign(vg, NvgAlign.ALIGN_LEFT|NvgAlign.ALIGN_MIDDLE);
         Nvg.text(vg, 100, 100, "Some other text!".c_str(), untyped __cpp__("NULL"));
+
         Nvg.endFrame(vg);
     }
 }
