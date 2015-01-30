@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project>
 
-	<meta title="NanoVG Demo" package="com.nanovg.demo" version="1.0.0" company="" />
-	<app main="Demo" path="." file="NanoVG-Demo" />
+	<meta title="NanoVG Demo" package="com.nanovg.dmo" version="1.0.0" company="" />
+	<app main="Main" path="." file="NanoVG-Demo" />
 	<window hardware="true" allow-shaders="true" require-shaders="true" depth-buffer="true" stencil-buffer="true" fps="100"/>
 
 	<source path="src" />
