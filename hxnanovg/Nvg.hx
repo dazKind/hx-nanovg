@@ -1,10 +1,8 @@
 package hxnanovg;
 
-import cpp.Char;
 import cpp.ConstPointer;
 import cpp.Pointer;
 import cpp.UInt8;
-import cpp.Float32;
 
 @:include("hx-nanovg.h")
 @:native("NVGcontext")
@@ -54,10 +52,10 @@ class NvgAlign {
 @:unreflective
 @:native("NVGcolor")
 extern class NvgColor {
-    public var r:Float32;
-    public var g:Float32;
-    public var b:Float32;
-    public var a:Float32;
+    public var r:Float;
+    public var g:Float;
+    public var b:Float;
+    public var a:Float;
 }
 
 @:include("nanovg.h")
@@ -69,8 +67,8 @@ extern class NvgPaint {
     public var xform:Dynamic; // float[6]
     @:native("float[]")
     public var extent:Dynamic; // float[3]
-    public var radius:Float32;
-    public var feather:Float32;
+    public var radius:Float;
+    public var feather:Float;
     public var innerColor:NvgColor;
     public var outerColor:NvgColor;
     public var image:Int;
@@ -82,10 +80,10 @@ extern class NvgPaint {
 @:unreflective
 @:native("NVGglyphPosition")
 extern class NvgGlyphPosition {
-    public var str:ConstPointer<Char>;
-    public var x:Float32;
-    public var min:Float32;
-    public var max:Float32;
+    public var str:String;
+    public var x:Float;
+    public var min:Float;
+    public var max:Float;
 }
 
 @:include("nanovg.h")
@@ -93,12 +91,12 @@ extern class NvgGlyphPosition {
 @:unreflective
 @:native("NVGtextRow")
 extern class NvgTextRow {
-    public var start:ConstPointer<Char>;
-    public var end:ConstPointer<Char>;
-    public var next:ConstPointer<Char>;
-    public var width:Float32;
-    public var minx:Float32;
-    public var maxx:Float32;
+    public var start:String;
+    public var end:String;
+    public var next:String;
+    public var width:Float;
+    public var minx:Float;
+    public var maxx:Float;
 }
 
 @:include("nanovg.h")
@@ -113,7 +111,7 @@ extern class Nvg {
     public static function deleteGL(_ctx:Pointer<NvgContext>):Void;
 
     @:native("::nvgBeginFrame")
-    public static function beginFrame(_ctx:Pointer<NvgContext>, _windowWidth:Int, _windowHeight:Int, _devicePixelRatio:Float32):Void;
+    public static function beginFrame(_ctx:Pointer<NvgContext>, _windowWidth:Int, _windowHeight:Int, _devicePixelRatio:Float):Void;
 
     @:native("::nvgEndFrame")
     public static function endFrame(_ctx:Pointer<NvgContext>):Void; 
@@ -123,28 +121,28 @@ extern class Nvg {
     public static function rgb(_r:UInt8, _g:UInt8, _b:UInt8):NvgColor;
 
     @:native("::nvgRGBf")
-    public static function rgbf(_r:Float32, _g:Float32, _b:Float32):NvgColor;
+    public static function rgbf(_r:Float, _g:Float, _b:Float):NvgColor;
 
     @:native("::nvgRGBA")
     public static function rgba(_r:UInt8, _g:UInt8, _b:UInt8, _a:UInt8):NvgColor;
 
     @:native("::nvgRGBAf")
-    public static function rgbaf(_r:Float32, _g:Float32, _b:Float32, _a:Float32):NvgColor;
+    public static function rgbaf(_r:Float, _g:Float, _b:Float, _a:Float):NvgColor;
 
     @:native("::nvgLerpRGBA")
-    public static function lerpRgba(_c0:NvgColor, _c1:NvgColor, _u:Float32):NvgColor;
+    public static function lerpRgba(_c0:NvgColor, _c1:NvgColor, _u:Float):NvgColor;
 
     @:native("::nvgTransRGBA")
     public static function transRgba(_c0:NvgColor, _a:UInt8):NvgColor;
 
     @:native("::nvgTransRGBAf")
-    public static function transRgbaf(_c0:NvgColor, _a:Float32):NvgColor;
+    public static function transRgbaf(_c0:NvgColor, _a:Float):NvgColor;
 
     @:native("::nvgHSL")
-    public static function hsl(_h:Float32, _s:Float32, _l:Float32):NvgColor;
+    public static function hsl(_h:Float, _s:Float, _l:Float):NvgColor;
 
     @:native("::nvgHSLA")
-    public static function hsla(_h:Float32, _s:Float32, _l:Float32, _a:UInt8):NvgColor;
+    public static function hsla(_h:Float, _s:Float, _l:Float, _a:UInt8):NvgColor;
 
 
     @:native("::nvgSave")
@@ -170,10 +168,10 @@ extern class Nvg {
     public static function fillPaint(_ctx:Pointer<NvgContext>, _paint:NvgPaint):Void;
 
     @:native("::nvgMiterLimit")
-    public static function miterLimit(_ctx:Pointer<NvgContext>, _limit:Float32):Void;
+    public static function miterLimit(_ctx:Pointer<NvgContext>, _limit:Float):Void;
 
     @:native("::nvgStrokeWidth")
-    public static function strokeWidth(_ctx:Pointer<NvgContext>, _size:Float32):Void;
+    public static function strokeWidth(_ctx:Pointer<NvgContext>, _size:Float):Void;
 
     @:native("::nvgLineCap")
     public static function lineCap(_ctx:Pointer<NvgContext>, _cap:Int):Void;
@@ -182,7 +180,7 @@ extern class Nvg {
     public static function lineJoin(_ctx:Pointer<NvgContext>, _join:Int):Void;
 
     @:native("::nvgGlobalAlpha")
-    public static function globalAlpha(_ctx:Pointer<NvgContext>, _alpha:Float32):Void;
+    public static function globalAlpha(_ctx:Pointer<NvgContext>, _alpha:Float):Void;
 
 
     @:native("::nvgResetTransform")
@@ -190,75 +188,75 @@ extern class Nvg {
 
 
     @:native("::nvgTransform")
-    public static function transform(_ctx:Pointer<NvgContext>, _a:Float32, _b:Float32, _c:Float32, _d:Float32, _e:Float32, _f:Float32):Void;
+    public static function transform(_ctx:Pointer<NvgContext>, _a:Float, _b:Float, _c:Float, _d:Float, _e:Float, _f:Float):Void;
 
     @:native("::nvgTranslate")
-    public static function translate(_ctx:Pointer<NvgContext>, _x:Float32, _y:Float32):Void;
+    public static function translate(_ctx:Pointer<NvgContext>, _x:Float, _y:Float):Void;
 
     @:native("::nvgRotate")
-    public static function rotate(_ctx:Pointer<NvgContext>, _angle:Float32):Void;
+    public static function rotate(_ctx:Pointer<NvgContext>, _angle:Float):Void;
 
     @:native("::nvgSkewX")
-    public static function skewX(_ctx:Pointer<NvgContext>, _angle:Float32):Void;
+    public static function skewX(_ctx:Pointer<NvgContext>, _angle:Float):Void;
 
     @:native("::nvgSkewY")
-    public static function skewY(_ctx:Pointer<NvgContext>, _angle:Float32):Void;
+    public static function skewY(_ctx:Pointer<NvgContext>, _angle:Float):Void;
 
     @:native("::nvgScale")
-    public static function scale(_ctx:Pointer<NvgContext>, _x:Float32, _y:Float32):Void;
+    public static function scale(_ctx:Pointer<NvgContext>, _x:Float, _y:Float):Void;
 
     @:native("::nvgCurrentTransform")
-    public static function currentTransform(_ctx:Pointer<NvgContext>, _xForm:Float32):Void;
+    public static function currentTransform(_ctx:Pointer<NvgContext>, _xForm:Float):Void;
 
     @:native("::nvgTransformIdentity")
-    public static function transformIdentity(_dst:Float32):Void;
+    public static function transformIdentity(_dst:Float):Void;
 
     @:native("::nvgTransformTranslate")
-    public static function transformTranslate(_dst:Pointer<Float32>, _tx:Float32, _ty:Float32):Void;
+    public static function transformTranslate(_dst:Pointer<Float>, _tx:Float, _ty:Float):Void;
 
     @:native("::nvgTransformScale")
-    public static function transformScale(_dst:Pointer<Float32>, _sx:Float32, _sy:Float32):Void;
+    public static function transformScale(_dst:Pointer<Float>, _sx:Float, _sy:Float):Void;
 
     @:native("::nvgTransformRotate")
-    public static function transformRotate(_dst:Pointer<Float32>, _angle:Float32):Void;
+    public static function transformRotate(_dst:Pointer<Float>, _angle:Float):Void;
 
     @:native("::nvgTransformSkewX")
-    public static function transformSkewX(_dst:Pointer<Float32>, _angle:Float32):Void;
+    public static function transformSkewX(_dst:Pointer<Float>, _angle:Float):Void;
 
     @:native("::nvgTransformSkewY")
-    public static function transformSkewY(_dst:Pointer<Float32>, _angle:Float32):Void;
+    public static function transformSkewY(_dst:Pointer<Float>, _angle:Float):Void;
 
     @:native("::nvgTransformMultiply")
-    public static function transformMultiply(_dst:Pointer<Float32>, _src:ConstPointer<Float32>):Void;
+    public static function transformMultiply(_dst:Pointer<Float>, _src:ConstPointer<Float>):Void;
 
     @:native("::nvgTransformPremultiply")
-    public static function transformPremultiply(_dst:Pointer<Float32>, _src:ConstPointer<Float32>):Void;
+    public static function transformPremultiply(_dst:Pointer<Float>, _src:ConstPointer<Float>):Void;
 
     @:native("::nvgTransformInverse")
-    public static function transformInverse(_dst:Pointer<Float32>, _src:ConstPointer<Float32>):Void;
+    public static function transformInverse(_dst:Pointer<Float>, _src:ConstPointer<Float>):Void;
 
     @:native("::nvgTransformPoint")
-    public static function transformPoint(_dstx:Pointer<Float32>, _dsty:Pointer<Float32>, _xform:ConstPointer<Float32>, _srcx:Float32, _srcy:Float32):Void;
+    public static function transformPoint(_dstx:Pointer<Float>, _dsty:Pointer<Float>, _xform:ConstPointer<Float>, _srcx:Float, _srcy:Float):Void;
 
 
     @:native("::nvgDegToRad")
-    public static function degToRad(_deg:Float32):Float32;
+    public static function degToRad(_deg:Float):Float;
 
     @:native("::nvgRadToDeg")
-    public static function radToDeg(_rad:Float32):Float32;
+    public static function radToDeg(_rad:Float):Float;
 
 
     @:native("::nvgCreateImage")
-    public static function createImage(_ctx:Pointer<NvgContext>, _filename:ConstPointer<Char>):Int;
+    public static function createImage(_ctx:Pointer<NvgContext>, _filename:String):Int;
 
     @:native("::nvgCreateImageMem")
-    public static function createImageMem(_ctx:Pointer<NvgContext>, _data:Pointer<Char>, _ndata:Int):Int;
+    public static function createImageMem(_ctx:Pointer<NvgContext>, _data:haxe.io.BytesData, _ndata:Int):Int;
 
     @:native("::nvgCreateImageRGBA")
-    public static function createImageRGBA(_ctx:Pointer<NvgContext>, _w:Int, _h:Int, _data:Pointer<Char>):Int;
+    public static function createImageRGBA(_ctx:Pointer<NvgContext>, _w:Int, _h:Int, _data:haxe.io.BytesData):Int;
 
     @:native("::nvgUpdateImage")
-    public static function updateImage(_ctx:Pointer<NvgContext>, _image:Int, _data:Pointer<Char>):Void;
+    public static function updateImage(_ctx:Pointer<NvgContext>, _image:Int, _data:haxe.io.BytesData):Void;
 
     @:native("::nvgImageSize")
     public static function imageSize(_ctx:Pointer<NvgContext>, _image:Int, _w:Pointer<Int>, _h:Pointer<Int>):Void;
@@ -268,23 +266,23 @@ extern class Nvg {
 
 
     @:native("::nvgLinearGradient")
-    public static function linearGradient(_ctx:Pointer<NvgContext>, _sx:Float32, _sy:Float32, _ex:Float32, _ey:Float32, _icol:NvgColor, _ocol:NvgColor):NvgPaint;
+    public static function linearGradient(_ctx:Pointer<NvgContext>, _sx:Float, _sy:Float, _ex:Float, _ey:Float, _icol:NvgColor, _ocol:NvgColor):NvgPaint;
 
     @:native("::nvgBoxGradient")
-    public static function boxGradient(_ctx:Pointer<NvgContext>, _x:Float32, _y:Float32, _w:Float32, _h:Float32, _r:Float32, _f:Float32, _icol:NvgColor, _ocol:NvgColor):NvgPaint;
+    public static function boxGradient(_ctx:Pointer<NvgContext>, _x:Float, _y:Float, _w:Float, _h:Float, _r:Float, _f:Float, _icol:NvgColor, _ocol:NvgColor):NvgPaint;
 
     @:native("::nvgRadialGradient")
-    public static function radialGradient(_ctx:Pointer<NvgContext>, _cx:Float32, _cy:Float32, _inr:Float32, _outr:Float32, _icol:NvgColor, _ocol:NvgColor):NvgPaint;
+    public static function radialGradient(_ctx:Pointer<NvgContext>, _cx:Float, _cy:Float, _inr:Float, _outr:Float, _icol:NvgColor, _ocol:NvgColor):NvgPaint;
 
     @:native("::nvgImagePattern")
-    public static function imagePattern(_ctx:Pointer<NvgContext>, _ox:Float32, _oy:Float32, _ex:Float32, _ey:Float32, _angle:Float32, _image:Int, _repeat:Int, _alpha:Float32):NvgPaint;
+    public static function imagePattern(_ctx:Pointer<NvgContext>, _ox:Float, _oy:Float, _ex:Float, _ey:Float, _angle:Float, _image:Int, _repeat:Int, _alpha:Float):NvgPaint;
 
 
     @:native("::nvgScissor")
-    public static function scissor(_ctx:Pointer<NvgContext>, _x:Float32, _y:Float32, _w:Float32, _h:Float32):Void;
+    public static function scissor(_ctx:Pointer<NvgContext>, _x:Float, _y:Float, _w:Float, _h:Float):Void;
 
     @:native("::nvgIntersectScissor")
-    public static function intersectScissor(_ctx:Pointer<NvgContext>, _x:Float32, _y:Float32, _w:Float32, _h:Float32):Void;
+    public static function intersectScissor(_ctx:Pointer<NvgContext>, _x:Float, _y:Float, _w:Float, _h:Float):Void;
 
     @:native("::nvgResetScissor")
     public static function resetScissor(_ctx:Pointer<NvgContext>):Void;
@@ -294,16 +292,16 @@ extern class Nvg {
     public static function beginPath(_ctx:Pointer<NvgContext>):Void;
 
     @:native("::nvgMoveTo")
-    public static function moveTo(_ctx:Pointer<NvgContext>, _x:Float32, _y:Float32):Void;
+    public static function moveTo(_ctx:Pointer<NvgContext>, _x:Float, _y:Float):Void;
 
     @:native("::nvgLineTo")
-    public static function lineTo(_ctx:Pointer<NvgContext>, _x:Float32, _y:Float32):Void;
+    public static function lineTo(_ctx:Pointer<NvgContext>, _x:Float, _y:Float):Void;
 
     @:native("::nvgBezierTo")
-    public static function bezierTo(_ctx:Pointer<NvgContext>, _c1x:Float32, _c1y:Float32, _c2x:Float32, _c2y:Float32, _x:Float32, _y:Float32):Void;
+    public static function bezierTo(_ctx:Pointer<NvgContext>, _c1x:Float, _c1y:Float, _c2x:Float, _c2y:Float, _x:Float, _y:Float):Void;
 
     @:native("::nvgArcTo")
-    public static function arcTo(_ctx:Pointer<NvgContext>, _x1:Float32, _y1:Float32, _x2:Float32, _y2:Float32, _radius:Float32):Void;
+    public static function arcTo(_ctx:Pointer<NvgContext>, _x1:Float, _y1:Float, _x2:Float, _y2:Float, _radius:Float):Void;
 
     @:native("::nvgClosePath")
     public static function closePath(_ctx:Pointer<NvgContext>):Void;
@@ -312,19 +310,19 @@ extern class Nvg {
     public static function pathWinding(_ctx:Pointer<NvgContext>, _dir:Int):Void;
 
     @:native("::nvgArc")
-    public static function arc(_ctx:Pointer<NvgContext>, _cx:Float32, _cy:Float32, _r:Float32, _a0:Float32, _a1:Float32, _dir:Int):Void;
+    public static function arc(_ctx:Pointer<NvgContext>, _cx:Float, _cy:Float, _r:Float, _a0:Float, _a1:Float, _dir:Int):Void;
 
     @:native("::nvgRect")
-    public static function rect(_ctx:Pointer<NvgContext>, _x:Float32, _y:Float32, _w:Float32, _h:Float32):Void;
+    public static function rect(_ctx:Pointer<NvgContext>, _x:Float, _y:Float, _w:Float, _h:Float):Void;
 
     @:native("::nvgRoundedRect")
-    public static function roundedRect(_ctx:Pointer<NvgContext>, _x:Float32, _y:Float32, _w:Float32, _h:Float32, _r:Float32):Void;
+    public static function roundedRect(_ctx:Pointer<NvgContext>, _x:Float, _y:Float, _w:Float, _h:Float, _r:Float):Void;
 
     @:native("::nvgEllipse")
-    public static function ellipse(_ctx:Pointer<NvgContext>, _cx:Float32, _cy:Float32, _rx:Float32, _ry:Float32):Void;
+    public static function ellipse(_ctx:Pointer<NvgContext>, _cx:Float, _cy:Float, _rx:Float, _ry:Float):Void;
 
     @:native("::nvgCircle")
-    public static function circle(_ctx:Pointer<NvgContext>, _cx:Float32, _cy:Float32, _r:Float32):Void;
+    public static function circle(_ctx:Pointer<NvgContext>, _cx:Float, _cy:Float, _r:Float):Void;
 
     @:native("::nvgFill")
     public static function fill(_ctx:Pointer<NvgContext>):Void;
@@ -334,25 +332,25 @@ extern class Nvg {
 
     
     @:native("::nvgCreateFont")
-    public static function createFont(_ctx:Pointer<NvgContext>, _name:ConstPointer<Char>, _filename:ConstPointer<Char>):Int;
+    public static function createFont(_ctx:Pointer<NvgContext>, _name:String, _filename:String):Int;
 
     @:native("::nvgCreateFontMem")
-    public static function createFontMem(_ctx:Pointer<NvgContext>, _name:ConstPointer<Char>, _data:Pointer<Char>, _ndata:Int, _freeData:Int):Int;
+    public static function createFontMem(_ctx:Pointer<NvgContext>, _name:String, _data:haxe.io.BytesData, _ndata:Int, _freeData:Int):Int;
 
     @:native("::nvgFindFont")
-    public static function findFont(_ctx:Pointer<NvgContext>, _name:ConstPointer<Char>):Int;
+    public static function findFont(_ctx:Pointer<NvgContext>, _name:String):Int;
 
     @:native("::nvgFontSize")
-    public static function fontSize(_ctx:Pointer<NvgContext>, _size:Float32):Void;
+    public static function fontSize(_ctx:Pointer<NvgContext>, _size:Float):Void;
 
     @:native("::nvgFontBlur")
-    public static function fontBlur(_ctx:Pointer<NvgContext>, _blur:Float32):Void;
+    public static function fontBlur(_ctx:Pointer<NvgContext>, _blur:Float):Void;
 
     @:native("::nvgTextLetterSpacing")
-    public static function textLetterSpacing(_ctx:Pointer<NvgContext>, _spacing:Float32):Void;
+    public static function textLetterSpacing(_ctx:Pointer<NvgContext>, _spacing:Float):Void;
 
     @:native("::nvgTextLineHeight")
-    public static function textLineHeight(_ctx:Pointer<NvgContext>, _lineHeight:Float32):Void;
+    public static function textLineHeight(_ctx:Pointer<NvgContext>, _lineHeight:Float):Void;
 
     @:native("::nvgTextAlign")
     public static function textAlign(_ctx:Pointer<NvgContext>, _align:Int):Void;
@@ -361,27 +359,27 @@ extern class Nvg {
     public static function fontFaceId(_ctx:Pointer<NvgContext>, _font:Int):Void;
 
     @:native("::nvgFontFace")
-    public static function fontFace(_ctx:Pointer<NvgContext>, _font:ConstPointer<Char>):Void;
+    public static function fontFace(_ctx:Pointer<NvgContext>, _font:String):Void;
 
     @:native("::nvgText")
-    public static function text(_ctx:Pointer<NvgContext>, _x:Float32, _y:Float32, _string:ConstPointer<Char>, _end:ConstPointer<Char>):Float32;
+    public static function text(_ctx:Pointer<NvgContext>, _x:Float, _y:Float, _string:String, _end:String):Float;
 
     @:native("::nvgTextBox")
-    public static function textBox(_ctx:Pointer<NvgContext>, _x:Float32, _y:Float32, _breakRowWidth:Float32, _string:ConstPointer<Char>, _end:ConstPointer<Char>):Void;
+    public static function textBox(_ctx:Pointer<NvgContext>, _x:Float, _y:Float, _breakRowWidth:Float, _string:String, _end:String):Void;
 
     @:native("::nvgTextBounds")
-    public static function textBounds(_ctx:Pointer<NvgContext>, _x:Float32, _y:Float32, _string:ConstPointer<Char>, _end:ConstPointer<Char>, _bounds:Pointer<Float32>):Float32;
+    public static function textBounds(_ctx:Pointer<NvgContext>, _x:Float, _y:Float, _string:String, _end:String, _bounds:Pointer<Float>):Float;
 
     @:native("::nvgTextBoxBounds")
-    public static function textBoxBounds(_ctx:Pointer<NvgContext>, _x:Float32, _y:Float32, _breakRowWidth:Float32, _string:ConstPointer<Char>, _end:ConstPointer<Char>, _bounds:Pointer<Float32>):Void;
+    public static function textBoxBounds(_ctx:Pointer<NvgContext>, _x:Float, _y:Float, _breakRowWidth:Float, _string:String, _end:String, _bounds:Pointer<Float>):Void;
 
     @:native("::nvgTextGlyphPositions")
-    public static function textGlyphPositions(_ctx:Pointer<NvgContext>, _x:Float32, _y:Float32, _string:ConstPointer<Char>, _end:ConstPointer<Char>, _positions:Pointer<NvgGlyphPosition>, _maxPositions:Int):Int;
+    public static function textGlyphPositions(_ctx:Pointer<NvgContext>, _x:Float, _y:Float, _string:String, _end:String, _positions:Pointer<NvgGlyphPosition>, _maxPositions:Int):Int;
 
     @:native("::nvgTextMetrics")
-    public static function textMetrics(_ctx:Pointer<NvgContext>, _ascender:Pointer<Float32>, _descender:Pointer<Float32>, _lineh:Pointer<Float32>):Void;
+    public static function textMetrics(_ctx:Pointer<NvgContext>, _ascender:Pointer<Float>, _descender:Pointer<Float>, _lineh:Pointer<Float>):Void;
 
     @:native("::nvgTextBreakLines")
-    public static function textBreakLines(_ctx:Pointer<NvgContext>, _string:ConstPointer<Char>, _end:ConstPointer<Char>, _breakRowWidth:Float32, _rows:Pointer<NvgTextRow>, _maxRows:Int):Int;
+    public static function textBreakLines(_ctx:Pointer<NvgContext>, _string:String, _end:String, _breakRowWidth:Float, _rows:Pointer<NvgTextRow>, _maxRows:Int):Int;
 }
 
