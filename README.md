@@ -13,7 +13,7 @@ or
 git clone https://github.com/dazKind/hx-nanovg --recursive
 haxelib dev hx-nanovg hx-nanovg
 ```
-then check out the **nanovg-repo** to **/deps/nanovg**.
+then clone **https://github.com/memononen/nanovg** into **/deps/nanovg**.
 
 #### Included Demo:
 ![hx-nanovg](http://developium.net/pics/nanovg2.png)
