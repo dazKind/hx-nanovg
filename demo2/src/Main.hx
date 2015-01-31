@@ -43,13 +43,13 @@ class Main extends snow.App {
         
         Nvg.fontFaceId(vg, font);
         Nvg.fillColor(vg, Nvg.rgba(255,0,0,255));
-        Nvg.text(vg, 50, 50, "This is some text".c_str(), untyped __cpp__("NULL"));
+        Nvg.text(vg, 50, 50, untyped "This is some text", untyped null);
 
         Nvg.fontSize(vg, 100.0);
         Nvg.fontFaceId(vg, font);
         Nvg.fillColor(vg, Nvg.rgba(255,255,255,64));
         Nvg.textAlign(vg, NvgAlign.ALIGN_LEFT|NvgAlign.ALIGN_MIDDLE);
-        Nvg.text(vg, 100, 100, "Some other text!".c_str(), untyped __cpp__("NULL"));
+        Nvg.text(vg, 100, 100, untyped "Some other text!", untyped null);
 
         Nvg.endFrame(vg);
 
