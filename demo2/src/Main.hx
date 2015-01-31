@@ -20,6 +20,9 @@ class Main extends snow.App {
 	public function new() super();
 
 	override function ready() {
+
+        trace(GL.versionString());
+
         app.window.onrender = onrender;
         this.render_rate = 1/9001;
 
@@ -68,6 +71,12 @@ class Main extends snow.App {
                 this.app.windowing.enable_vsync(config.runtime.window.vsync);
             }
         }
+
+            //request minimum version
+        config.render.opengl.major = 3;
+        config.render.opengl.minor = 0;
+        config.render.opengl.profile = OpenGLProfile.core;
+
         config.render.antialiasing = 16;
         config.render.stencil_bits = 8;
         config.render.depth_bits = 24;
