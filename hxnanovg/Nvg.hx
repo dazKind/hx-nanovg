@@ -101,9 +101,8 @@ extern class NvgTextRow {
     public var maxx:Float32;
 }
 
-
-@:include("hx-nanovg.h")
 @:include("nanovg.h")
+@:include("hx-nanovg.h")
 @:buildXml("&<include name='${haxelib:hx-nanovg}/Build.xml'/>")
 extern class Nvg {
 
@@ -284,6 +283,9 @@ extern class Nvg {
     @:native("::nvgScissor")
     public static function scissor(_ctx:Pointer<NvgContext>, _x:Float32, _y:Float32, _w:Float32, _h:Float32):Void;
 
+    @:native("::nvgIntersectScissor")
+    public static function intersectScissor(_ctx:Pointer<NvgContext>, _x:Float32, _y:Float32, _w:Float32, _h:Float32):Void;
+
     @:native("::nvgResetScissor")
     public static function resetScissor(_ctx:Pointer<NvgContext>):Void;
 
@@ -310,19 +312,19 @@ extern class Nvg {
     public static function pathWinding(_ctx:Pointer<NvgContext>, _dir:Int):Void;
 
     @:native("::nvgArc")
-    public static function arc(_ctx:Pointer<NvgContext>, _cx:Int, _cy:Int, _r:Float32, _a0:Float32, _a1:Float32, _dir:Int):Void;
+    public static function arc(_ctx:Pointer<NvgContext>, _cx:Float32, _cy:Float32, _r:Float32, _a0:Float32, _a1:Float32, _dir:Int):Void;
 
     @:native("::nvgRect")
-    public static function rect(_ctx:Pointer<NvgContext>, _x:Int, _y:Int, _w:Float32, _h:Float32):Void;
+    public static function rect(_ctx:Pointer<NvgContext>, _x:Float32, _y:Float32, _w:Float32, _h:Float32):Void;
 
     @:native("::nvgRoundedRect")
-    public static function roundedRect(_ctx:Pointer<NvgContext>, _x:Int, _y:Int, _w:Float32, _h:Float32, _r:Float32):Void;
+    public static function roundedRect(_ctx:Pointer<NvgContext>, _x:Float32, _y:Float32, _w:Float32, _h:Float32, _r:Float32):Void;
 
     @:native("::nvgEllipse")
-    public static function ellipse(_ctx:Pointer<NvgContext>, _cx:Int, _cy:Int, _rx:Float32, _ry:Float32):Void;
+    public static function ellipse(_ctx:Pointer<NvgContext>, _cx:Float32, _cy:Float32, _rx:Float32, _ry:Float32):Void;
 
     @:native("::nvgCircle")
-    public static function circle(_ctx:Pointer<NvgContext>, _cx:Int, _cy:Int, _r:Float32):Void;
+    public static function circle(_ctx:Pointer<NvgContext>, _cx:Float32, _cy:Float32, _r:Float32):Void;
 
     @:native("::nvgFill")
     public static function fill(_ctx:Pointer<NvgContext>):Void;

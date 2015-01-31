@@ -1,0 +1,28 @@
+{
+	"project": {
+		"name": "hx-nanovg snow demo",
+		"version": "1.0.0",
+		"author": "Michael Bickel",
+
+		"app" : {
+			"main": "Main",
+			"output": "bin",
+			"name": "hx-nanovg-snow-demo",
+			"package": "net.developium.hx-nanovg-demo2",
+			"codepaths": ["src"]
+		},
+
+		"build": {
+			"dependencies": {
+				"snow": "*",
+				"hx-nanovg": "*"
+			},
+			"defines" : [], 
+			"flags": []
+		},
+		"files" : {
+			"config" : "config.json",
+			"assets" : "assets/"
+		}
+	}
+}

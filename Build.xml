@@ -7,7 +7,7 @@
         <compilerflag value='-I${haxelib:hx-nanovg}/native-bindings/src'/>
         <compilerflag value='-I${haxelib:hx-nanovg}/deps/nanovg/src'/>
         <compilerflag value="-I${NATIVE_TOOLKIT_PATH}/glew/include"/>
-        <compilerflag value='-DNANOVG_GL2_IMPLEMENTATION'/>
+        <compilerflag value='-DNANOVG_GL3_IMPLEMENTATION'/>
         
         <include name="${NATIVE_TOOLKIT_PATH}/glew/defines.xml" />
 
