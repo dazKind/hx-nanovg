@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+	
+	<meta title="NanovgDemo" package="com.nanovg.NanovgDemo" version="1.0.0" company="" />
+	<app main="Main" file="NanovgDemo" path="." />
+	
+	<window hardware="true" width="1280" height="720"  allow-shaders="true" require-shaders="true" depth-buffer="true" stencil-buffer="true" fps="100"/>
+
+	<source path="src" />
+
+    <android target-sdk-version="19" />
+	
+	<haxelib name="lime" />
+	<haxelib name="hx-nanovg" />
+	
+	<assets path="assets" rename="assets" exclude="*.dll|*.js|*.mp3|*.svg" />
+	<icon path="assets/lime.svg" />
+	
+	<set name="-32" />
+	
+</project>
