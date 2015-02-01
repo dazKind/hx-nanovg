@@ -1,6 +1,7 @@
 
 ###Haxe Hxcpp-externs for https://github.com/memononen/nanovg
 
+Please note, that this library uses haxe 3.2 features for the binding. So right now(Feb 2015) you will need the development version of haxe&hxcpp till haxe 3.2 is released to make it work. Thanks.
 
 You may install using:
 ```
