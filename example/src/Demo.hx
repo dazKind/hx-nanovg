@@ -886,6 +886,7 @@ class Demo
 	
 	function drawParagraph(vg:Pointer<NvgContext>, x:Float, y:Float, width:Float, height:Float, mx:Float, my:Float):Void
 	{
+		// need to use the cpp syntax
 		untyped __cpp__("NVGtextRow rows[3];");
 		untyped __cpp__("NVGglyphPosition glyphs[100];");
 		

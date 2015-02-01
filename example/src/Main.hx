@@ -60,12 +60,22 @@ class Main extends Application
         GL.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT | GL.STENCIL_BUFFER_BIT);
 		
 		Nvg.beginFrame(_vg, this.window.width, this.window.height, 1.0);
-		
-		demo.render(_vg, mouseX, mouseY, this.window.width, this.window.height, blowup);
+		// calculate the minimum scale - with this the "scene" will be in the windows, at maximum size
+		var globalScale:Float = Math.min(this.window.width / config.width, this.window.height / config.height);
+		// position to center
+		var xp:Float = Math.fround((this.window.width - config.width * globalScale) * 0.5);
+		var yp:Float = Math.fround((this.window.height - config.height * globalScale) * 0.5);
+		//Nvg.save(_vg);
+		Nvg.translate(_vg, xp, yp);
+		Nvg.scale(_vg, globalScale, globalScale);
+		// transform the mouseX, mouseY coordinates too
+		demo.render(_vg, (mouseX - xp) / globalScale, (mouseY - yp) / globalScale, config.width, config.height, blowup);
 		
 		fpsMonitor.render();
 		
 		dbgTrace.render(_vg);
+		
+		//Nvg.restore(_vg);
 		
 		Nvg.endFrame(_vg);
 	}
