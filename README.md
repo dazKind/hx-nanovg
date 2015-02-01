@@ -17,6 +17,9 @@ haxelib dev hx-nanovg hx-nanovg
 #### Included Demo:
 ![hx-nanovg](http://developium.net/pics/nanovg2.png)
 
+#### Include Example from original NanoVG (not perfect):
+![hx-nanovg example](https://dl.dropboxusercontent.com/u/79150615/nanovg_example_in_haxe.png)
+
 #### Notes:
 * Demo uses Lime (stencil buffer enabled!)
 * uses https://github.com/native-toolkit/glew as submodule
