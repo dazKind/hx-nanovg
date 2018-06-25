@@ -27,7 +27,7 @@ class Main extends snow.App {
         this.render_rate = 1/9001;
 
         vg = Nvg.createGL(NvgMode.ANTIALIAS);
-        font = Nvg.createFont(vg, "arial".c_str(), "assets/arial.ttf".c_str());
+        font = Nvg.createFont(vg, "arial", "assets/arial.ttf");
         linearGradient = Nvg.linearGradient(vg, 0, 0, 500, 500, Nvg.rgba(255,192,0,255), Nvg.rgba(0,0,0,255));
     }
 

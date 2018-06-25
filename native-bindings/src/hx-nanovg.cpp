@@ -38,4 +38,8 @@ namespace nanovg {
             nvgDeleteGL3ES(_ctx);
         #endif
     }
+
+    int nvglCreateImageFromHandle(NVGcontext* ctx, int textureId, int w, int h, int imageFlags) {
+        return ::nvglCreateImageFromHandle(ctx, textureId, w, h, imageFlags);
+    }
 }
