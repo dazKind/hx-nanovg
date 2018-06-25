@@ -47,6 +47,15 @@ class NvgAlign {
     inline public static var ALIGN_BASELINE:Int  = 1<<6;
 }
 
+class NvgImageFlags {
+    inline public static var IMAGE_GENERATE_MIPMAPS:Int = 1<<0;
+    inline public static var IMAGE_REPEATX:Int          = 1<<1;
+    inline public static var IMAGE_REPEATY:Int          = 1<<2;
+    inline public static var IMAGE_FLIPY:Int            = 1<<3;
+    inline public static var IMAGE_PREMULTIPLIED:Int    = 1<<4;
+    inline public static var IMAGE_NODELETE:Int         = 1<<16;
+}
+
 @:include("nanovg.h")
 @:structAccess
 @:unreflective
@@ -98,6 +107,7 @@ extern class NvgTextRow {
     public var minx:Float;
     public var maxx:Float;
 }
+
 
 @:include("nanovg.h")
 @:include("hx-nanovg.h")
@@ -250,13 +260,31 @@ extern class Nvg {
     public static function createImage(_ctx:Pointer<NvgContext>, _filename:String):Int;
 
     @:native("::nvgCreateImageMem")
-    public static function createImageMem(_ctx:Pointer<NvgContext>, _data:haxe.io.BytesData, _ndata:Int):Int;
+    private static function _createImageMem(_ctx:Pointer<NvgContext>, _imageFlags:cpp.Int32, _data:cpp.RawPointer<cpp.UInt8>, _ndata:cpp.Int32):Int;
+    inline public static function createImageMem(_ctx:Pointer<NvgContext>, _imageFlags:cpp.Int32, _data:haxe.io.BytesData, _dataLength:cpp.Int32):Int {
+        var ab = cpp.NativeArray.getBase(_data);
+        var ptr:cpp.RawPointer<cpp.Char> = untyped __cpp__('{0}->getBase()', ab); // hxcpp tries to resolve through reflection?!? WHY? omg, just force it!
+        return _createImageMem(_ctx, _imageFlags, cast ptr, _dataLength);
+    }
 
     @:native("::nvgCreateImageRGBA")
-    public static function createImageRGBA(_ctx:Pointer<NvgContext>, _w:Int, _h:Int, _data:haxe.io.BytesData):Int;
+    private static function _createImageRGBA(_ctx:Pointer<NvgContext>, _w:Int, _h:Int, _imageFlags:cpp.Int32, _data:cpp.RawPointer<cpp.UInt8>):Int;
+    inline public static function createImageRGBA(_ctx:Pointer<NvgContext>, _w:Int, _h:Int, _imageFlags:cpp.Int32, _data:haxe.io.BytesData):Int {
+        var ab = cpp.NativeArray.getBase(_data);
+        var ptr:cpp.RawPointer<cpp.Char> = untyped __cpp__('{0}->getBase()', ab); // hxcpp tries to resolve through reflection?!? WHY? omg, just force it!
+        return _createImageRGBA(_ctx, _w, _h, _imageFlags, cast ptr);
+    }
 
     @:native("::nvgUpdateImage")
-    public static function updateImage(_ctx:Pointer<NvgContext>, _image:Int, _data:haxe.io.BytesData):Void;
+    private static function _updateImage(_ctx:Pointer<NvgContext>, _image:Int, _data:cpp.RawPointer<cpp.UInt8>):Void;
+    inline public static function updateImage(_ctx:Pointer<NvgContext>, _image:Int, _data:haxe.io.BytesData):Void {
+        var ab = cpp.NativeArray.getBase(_data);
+        var ptr:cpp.RawPointer<cpp.Char> = untyped __cpp__('{0}->getBase()', ab); // hxcpp tries to resolve through reflection?!? WHY? omg, just force it!
+        _updateImage(_ctx, _image, cast ptr);
+    }
+
+    @:native("nanovg::nvglCreateImageFromHandle")
+    public static function createImageFromHandle(_ctx:Pointer<NvgContext>, _glHandle:Int, _w:Int, _h:Int, _flags:Int):Int;    
 
     @:native("::nvgImageSize")
     public static function imageSize(_ctx:Pointer<NvgContext>, _image:Int, _w:Pointer<Int>, _h:Pointer<Int>):Void;
@@ -275,7 +303,7 @@ extern class Nvg {
     public static function radialGradient(_ctx:Pointer<NvgContext>, _cx:Float, _cy:Float, _inr:Float, _outr:Float, _icol:NvgColor, _ocol:NvgColor):NvgPaint;
 
     @:native("::nvgImagePattern")
-    public static function imagePattern(_ctx:Pointer<NvgContext>, _ox:Float, _oy:Float, _ex:Float, _ey:Float, _angle:Float, _image:Int, _repeat:Int, _alpha:Float):NvgPaint;
+    public static function imagePattern(_ctx:Pointer<NvgContext>, _ox:Float, _oy:Float, _ex:Float, _ey:Float, _angle:Float, _image:Int, _alpha:Float):NvgPaint;
 
 
     @:native("::nvgScissor")
@@ -335,7 +363,12 @@ extern class Nvg {
     public static function createFont(_ctx:Pointer<NvgContext>, _name:String, _filename:String):Int;
 
     @:native("::nvgCreateFontMem")
-    public static function createFontMem(_ctx:Pointer<NvgContext>, _name:String, _data:haxe.io.BytesData, _ndata:Int, _freeData:Int):Int;
+    private static function _createFontMem(_ctx:Pointer<NvgContext>, _name:String, _data:cpp.RawPointer<cpp.UInt8>, _ndata:Int, _freeData:Int):Int;
+    inline public static function createFontMem(_ctx:Pointer<NvgContext>, _name:String, _data:haxe.io.BytesData):Int {
+        var ab = cpp.NativeArray.getBase(_data);
+        var ptr:cpp.RawPointer<cpp.Char> = untyped __cpp__('{0}->getBase()', ab); // hxcpp tries to resolve through reflection?!? WHY? omg, just force it!
+        return _createFontMem(_ctx, _name, cast ptr, _data.length, 0);
+    }
 
     @:native("::nvgFindFont")
     public static function findFont(_ctx:Pointer<NvgContext>, _name:String):Int;
@@ -362,16 +395,16 @@ extern class Nvg {
     public static function fontFace(_ctx:Pointer<NvgContext>, _font:String):Void;
 
     @:native("::nvgText")
-    public static function text(_ctx:Pointer<NvgContext>, _x:Float, _y:Float, _string:String, _end:String):Float;
+    public static function text(_ctx:Pointer<NvgContext>, _x:Float, _y:Float, _string:String, ?_end:String=null):Float;
 
     @:native("::nvgTextBox")
     public static function textBox(_ctx:Pointer<NvgContext>, _x:Float, _y:Float, _breakRowWidth:Float, _string:String, _end:String):Void;
 
     @:native("::nvgTextBounds")
-    public static function textBounds(_ctx:Pointer<NvgContext>, _x:Float, _y:Float, _string:String, _end:String, _bounds:Pointer<Float>):Float;
+    public static function textBounds(_ctx:Pointer<NvgContext>, _x:Float, _y:Float, _string:String, _end:String, _bounds:cpp.RawPointer<cpp.Float32>):Float;
 
     @:native("::nvgTextBoxBounds")
-    public static function textBoxBounds(_ctx:Pointer<NvgContext>, _x:Float, _y:Float, _breakRowWidth:Float, _string:String, _end:String, _bounds:Pointer<Float>):Void;
+    public static function textBoxBounds(_ctx:Pointer<NvgContext>, _x:Float, _y:Float, _breakRowWidth:Float, _string:String, _end:String, _bounds:cpp.RawPointer<cpp.Float32>):Void;
 
     @:native("::nvgTextGlyphPositions")
     public static function textGlyphPositions(_ctx:Pointer<NvgContext>, _x:Float, _y:Float, _string:String, _end:String, _positions:Pointer<NvgGlyphPosition>, _maxPositions:Int):Int;

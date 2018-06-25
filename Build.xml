@@ -16,7 +16,7 @@
     </files>
     <target id='haxe'>
     
-        <files id="native-toolkit-glew"/>
+        <!--<files id="native-toolkit-glew"/>-->
 
         <lib name='opengl32.lib' if="windows"/>
         <vflag name="-framework" value="OpenGL" if="mac"/>
